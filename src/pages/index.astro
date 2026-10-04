@@ -1,36 +1,95 @@
 ---
 import Base from '../layouts/Base.astro';
 
-// Yer tutucu içerik — yapı el kitabı §6.2'den (infra/handbook/01-alan-adi-el-kitabi.md).
+// Kaynak: LinkedIn profil PDF'i (2026-10-05). Yapı el kitabı §6.2'den (infra/handbook/01-alan-adi-el-kitabi.md).
 const projects = [
-	{ name: 'Outfitter', summary: 'Bir cümlelik açıklama.', stack: 'Teknoloji', href: '#' },
-	{ name: 'Proje 2', summary: 'Bir cümlelik açıklama.', stack: 'Teknoloji', href: '#' },
-	{ name: 'Proje 3', summary: 'Bir cümlelik açıklama.', stack: 'Teknoloji', href: '#' },
+	{
+		name: 'PUNGI',
+		summary:
+			"Yılan oyununu deneme-yanılmayla kendi kendine oynamayı öğrenen yapay zekâ. Double Deep Q Network'ün özgün bir varyantını tasarladık; ajan 32×32 alanda hedeflenen 100 puanı aştı. Gazi Üniversitesi bitirme projesi, üç kişilik ekip (2021).",
+		stack: 'Python · TensorFlow/Keras · PyGame',
+		href: 'https://drive.google.com/file/d/16y9fsmbkLLK8RTQWonhKANkeaX2vpBEr/view',
+		linkText: 'video',
+	},
+	{
+		name: 'Digitopia danışmanlık platformu',
+		summary: "Danışmanların Excel ve PowerPoint'le yürüttüğü işi standart bir platforma (PaaS) taşıdık; ürünü sıfırdan yönettim.",
+		stack: 'Ürün yönetimi · Figma',
+	},
+	{
+		name: 'Mobil e-ticaret uygulaması',
+		summary: "Onuk Digital için uçtan uca: yol haritası, Figma'da tasarım, emülatör ve cihazda test.",
+		stack: 'Ürün yönetimi · Figma',
+	},
+];
+
+const experience = [
+	{ role: 'Product Owner', org: 'Ödeal', period: '2026 – şimdi' },
+	{ role: 'E-ticaret İş Analisti', org: 'A101', period: '2024 – 2025' },
+	{ role: 'Product Owner / Manager', org: 'Digitopia', period: '2022 – 2024' },
+	{ role: 'Product Manager', org: 'Onuk Digital', period: '2022 – 2023' },
+	{ role: 'Research Engineer Intern', org: 'Open Zeka', period: '2021' },
+	{ role: 'Proje Mühendisi', org: 'İmestek Savunma Havacılık', period: '2019 – 2020' },
 ];
 ---
 
-<Base title="Şamil Bulur">
+<Base title="Şamil Bulur" description="Şamil Bulur — Product Owner. Ürün yönetimi, iş analizi ve kendi yazılım projeleri.">
 	<h1>Şamil Bulur</h1>
-	<p>Mobil ve backend geliştiricisi.</p>
+	<p>Product Owner. Kullanıcı ihtiyacını tasarıma, tasarımı çalışan yazılıma dönüştürüyorum.</p>
 
 	<h2>Şu an</h2>
-	<p>Ne üzerinde çalıştığını anlatan bir paragraf.</p>
+	<p>
+		Temmuz 2026'dan beri <strong>Ödeal</strong>'de Product Owner'ım. Öncesinde A101'de e-ticaret iş analisti olarak
+		ödeme sistemleri ve banka entegrasyonları üzerinde çalıştım. İş dışında kendi projelerimi ve bu siteyi
+		de taşıyan sunucu altyapımı kuruyorum.
+	</p>
 
-	<h2>Projeler</h2>
+	<h2>Seçilmiş işler</h2>
 	<ul>
 		{
 			projects.map((p) => (
 				<li>
-					<a href={p.href}>{p.name}</a> — {p.summary} <span class="muted">{p.stack}</span>
+					<strong>{p.name}</strong> — {p.summary} <span class="muted">{p.stack}</span>
+					{p.href && <a href={p.href}>{p.linkText}</a>}
 				</li>
 			))
 		}
 	</ul>
 
+	<h2>Deneyim</h2>
+	<ul class="timeline">
+		{
+			experience.map((e) => (
+				<li>
+					<span>
+						{e.role}, {e.org}
+					</span>
+					<span class="muted">{e.period}</span>
+				</li>
+			))
+		}
+	</ul>
+	<p class="muted">Gazi Üniversitesi, Elektrik-Elektronik Mühendisliği (2016 – 2021).</p>
+
 	<h2>İletişim</h2>
 	<ul>
+		<li><a href="https://www.linkedin.com/in/samilbulur">LinkedIn</a></li>
 		<li><a href="https://github.com/smlblr">GitHub</a></li>
-		<li>E-posta: (eklenecek)</li>
-		<li>LinkedIn: (eklenecek)</li>
 	</ul>
 </Base>
+
+<style>
+	.timeline {
+		list-style: none;
+		padding: 0;
+	}
+	.timeline li {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 0.25rem 0;
+	}
+	.timeline li span:last-child {
+		white-space: nowrap;
+	}
+</style>
