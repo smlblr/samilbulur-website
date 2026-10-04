@@ -1,0 +1,72 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = 'Şamil Bulur — kişisel site' } = Astro.props;
+---
+
+<html lang="tr">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<a href="/">Şamil Bulur</a>
+				<a href="/blog/">Blog</a>
+			</nav>
+		</header>
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--bg: #fdfdfc;
+		--fg: #1d1d1f;
+		--muted: #6b6b70;
+		--link: #1f5fbf;
+	}
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--bg: #141416;
+			--fg: #e8e8ea;
+			--muted: #9a9aa0;
+			--link: #7fb0ff;
+		}
+	}
+	body {
+		margin: 0 auto;
+		max-width: 42rem;
+		padding: 2rem 1rem 4rem;
+		background: var(--bg);
+		color: var(--fg);
+		font: 17px/1.6 system-ui, sans-serif;
+	}
+	a {
+		color: var(--link);
+	}
+	nav {
+		display: flex;
+		gap: 1.25rem;
+		margin-bottom: 3rem;
+	}
+	nav a:first-child {
+		font-weight: 600;
+		color: var(--fg);
+		text-decoration: none;
+	}
+	.muted {
+		color: var(--muted);
+	}
+</style>

@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Yer tutucu içerik — yapı el kitabı §6.2'den (infra/handbook/01-alan-adi-el-kitabi.md).
+const projects = [
+	{ name: 'Outfitter', summary: 'Bir cümlelik açıklama.', stack: 'Teknoloji', href: '#' },
+	{ name: 'Proje 2', summary: 'Bir cümlelik açıklama.', stack: 'Teknoloji', href: '#' },
+	{ name: 'Proje 3', summary: 'Bir cümlelik açıklama.', stack: 'Teknoloji', href: '#' },
+];
+---
+
+<Base title="Şamil Bulur">
+	<h1>Şamil Bulur</h1>
+	<p>Mobil ve backend geliştiricisi.</p>
+
+	<h2>Şu an</h2>
+	<p>Ne üzerinde çalıştığını anlatan bir paragraf.</p>
+
+	<h2>Projeler</h2>
+	<ul>
+		{
+			projects.map((p) => (
+				<li>
+					<a href={p.href}>{p.name}</a> — {p.summary} <span class="muted">{p.stack}</span>
+				</li>
+			))
+		}
+	</ul>
+
+	<h2>İletişim</h2>
+	<ul>
+		<li><a href="https://github.com/smlblr">GitHub</a></li>
+		<li>E-posta: (eklenecek)</li>
+		<li>LinkedIn: (eklenecek)</li>
+	</ul>
+</Base>
