@@ -21,4 +21,7 @@ Yeni yazı: `src/content/blog/` altına `.md` dosyası ekle (örnek: `ornek-yazi
 
 ## Yayın
 
-Henüz yayında değil. Plan: Cloudflare Pages, build `npm run build`, çıktı `dist` — ayrıntılar `~/samilProjects/infra/handbook/01-alan-adi-el-kitabi.md` §6.4.
+Cloudflare Workers (statik varlıklar), GitHub'a bağlı: `main`'e her push build alır (`npm run build`) ve `npx wrangler deploy` ile `dist/`'i yayınlar. Hangi klasörün yayınlanacağı `wrangler.jsonc` içinde.
+
+- Şu an: https://samilbulur-website.samilblr.workers.dev
+- Alan adı (`samilbulur.com`) bağlanınca oradan da açılır — adımlar `~/samilProjects/infra/handbook/01-alan-adi-el-kitabi.md` §6.4.
